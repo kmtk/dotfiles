@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+#!/usr/bin/env python
+# -*- coding:utf-8 -*-
+
+'''
+$TM_FILENAME
+Created on ${date}
+@author: ${user}
+'''
+]]></content>
+	<tabTrigger>header</tabTrigger>
+	<scope>source.python</scope>
+    <description>File Header</description>
+</snippet>

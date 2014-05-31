@@ -1,0 +1,31 @@
+[
+    // Ctrl+Space でオートコンプリートのパネルを閉じる
+    { "keys": ["ctrl+space"], "command": "hide_auto_complete", "context":
+    	[
+    		{ "key": "auto_complete_visible", "operator": "equal", "operand": true }
+		]
+	},
+
+	// Group Control
+	// 左右２画面分割（左右均等）
+	{ "keys": ["ctrl+k", "ctrl+s"], "command": "create_pane", "args": {"direction": "right"} },
+
+	// 上下２画面分割（上７割、下３割とかにしたい）
+	{ "keys": ["ctrl+k", "ctrl+h"], "command": "create_pane", "args": {"direction": "down"} },
+
+	// Group のクローズ
+	{ "keys": ["ctrl+k", "ctrl+d"], "command": "destroy_pane", "args": {"direction": "self"} },
+
+	// フォーカスの移動（時計順）
+	{ "keys": ["ctrl+k", "ctrl+n"], "command": "focus_neighboring_group" },
+
+	// フォーカスの移動（逆時計順）
+	{ "keys": ["ctrl+k", "ctrl+shift+n"], "command": "focus_neighboring_group" , "args": {"forward": false} },
+
+	// ファイル＆フォーカスの移動（時計順）
+	{ "keys": ["ctrl+k", "ctrl+m"], "command": "move_to_neighboring_group" },
+
+	// ファイル＆フォーカスの移動（逆時計順）
+	{ "keys": ["ctrl+k", "ctrl+shift+m"], "command": "move_to_neighboring_group" , "args": {"forward": false} },
+]
+

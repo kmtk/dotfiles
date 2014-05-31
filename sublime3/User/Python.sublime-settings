@@ -1,0 +1,10 @@
+{
+	"color_scheme": "Packages/Theme - Flatland/Flatland Monokai.tmTheme",
+	"indent_to_bracket": true,
+	"rulers":
+	[
+		80,
+		100
+	],
+	"translate_tabs_to_spaces": true
+}

@@ -1,0 +1,43 @@
+{
+	/*
+        Default python interpreter.
+
+        This can (an should) be overriden by project settings
+    */
+    "python_interpreter": "D:\\dev\\Python33\\python",
+
+    /*
+        If anaconda_gutter_marks is true, this determines what theme is used.
+        Theme 'basic' only adds dots and circles to gutter.
+
+        Other available themes are 'alpha', 'bright', 'dark', 'hard' and
+        'simple'. To see icons that will be used for each theme check
+        gutter_icon_themes folder in Anaconda package.
+    */
+    "anaconda_gutter_theme": "bright",
+
+    /*
+        If 'outline' (default) anaconda will outline error lines
+        If 'fill' anconda will fill the lines
+        If 'none' anaconda will not draw anything on error lines
+    */
+    "anaconda_linter_mark_style": "outline",
+
+    /*
+        If anaconda_linter_mark_style is set to none and this is set to false,
+        anaconda will not underline errors
+
+        If anaconda_linter_mark_style is set to anything else, this option is
+        ignored
+    */
+    "anaconda_linter_underlines": true,
+
+    // Maximum line length for pep8
+    "pep8_max_line_length": 99,
+
+    /*
+        Set those aas true if you don't want Sublime Text regular completions
+    */
+    "suppress_word_completions": false,
+    "suppress_explicit_completions": true,
+}

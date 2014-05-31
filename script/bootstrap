@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+#
+# bootstrap installs things.
+
+
+# Print functions
+#
+print_debug() {
+  echo "$1"
+}
+
+print_info() {
+  echo -e "\033[33m$1\033[0m"
+}
+
+print_normal () {
+  echo -e "\r  \033[37m$1\033[0m"
+}
+
+print_success() {
+  echo -e "\r\033[2K  [ \033[00;32mOK\033[0m ] $1"
+}
+
+print_fail() {
+  echo -e "\r\033[2K  [\033[0;31mFAILED\033[0m] $1"
+  echo ''
+  exit
+}
+
+# Utilty
+#
+link () {
+  # link_debug $1 $2
+  link_impl $1 $2
+}
+
+link_debug() {
+  local src=$1 dst=$2
+  echo -e "  link $src -> $dst"
+}
+
+link_impl () {
+  local src=$1 dst=$2
+
+  local overwrite= backup= skip=
+  local action=
+
+  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  then
+
+    if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
+    then
+      print_normal "\"$(basename "$dst")\" already exists: what do you want to do? \n\
+      [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+      read -n 1 action
+
+      case "$action" in
+        o )
+          overwrite=true;;
+        O )
+          overwrite_all=true;;
+        b )
+          backup=true;;
+        B )
+          backup_all=true;;
+        s )
+          skip=true;;
+        S )
+          skip_all=true;;
+        * )
+          ;;
+      esac
+    fi
+
+    overwrite=${overwrite:-$overwrite_all}
+    backup=${backup:-$backup_all}
+    skip=${skip:-$skip_all}
+
+    if [ "$overwrite" == "true" ]
+    then
+      rm -rf "$dst"
+      print_success "removed $dst"
+    fi
+
+    if [ "$backup" == "true" ]
+    then
+      mv "$dst" "${dst}.backup"
+      print_success "moved $dst to ${dst}.backup"
+    fi
+
+    if [ "$skip" == "true" ]
+    then
+      print_success "skipped $src"
+    fi
+  fi
+
+  if [ "$skip" != "true" ]  # "false" or empty
+  then
+    ln -s "$1" "$2"
+    print_success "linked $1 to $2"
+  fi
+}
+
+# Setup functions
+#
+setup_ohmyzsh () {
+  print_info "setup_ohmyzsh"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  if [ ! -d $HOME/.oh-my-zsh ]; then
+    print_normal "$HOME/.oh-my-zsh is not exist."
+    sh -c $DOTFILES_ROOT/zsh/install_ohmyzsh.sh
+  fi
+
+  link "$DOTFILES_ROOT/zsh/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom"
+}
+
+setup_sublime3 () {
+  print_info "setup_sublime3"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  if [ ! -d $HOME/tool/sublime3 ]; then
+    print_normal "$HOME/tool/sublime3 is not exist."
+    sh -c $DOTFILES_ROOT/sublime3/install_sublime3.sh
+  fi
+
+  link "$DOTFILES_ROOT/sublime3/User" "$HOME/tool/sublime3/Data/Packages/User"
+  link "$HOME/tool/sublime3/sublime_text.exe" "$HOME/bin/subl"
+}
+
+setup_poderosa () {
+  print_info "setup_poderosa"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  if [ ! -d $HOME/tool/poderosa ]; then
+    print_normal "$HOME/tool/poderosa is not exist."
+    sh -c $DOTFILES_ROOT/poderosa/install_poderosa.sh
+  fi
+
+  local cyg_poderosa_conf=`cygpath -au ${APPDATA}/Poderosa`
+  link "$DOTFILES_ROOT/poderosa" "$cyg_poderosa_conf"
+}
+
+setup_dotfiles () {
+  print_info 'installing dotfiles'
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  # .symlink files
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+  do
+    dst="$HOME/$(basename "${src%.*}")"
+    link $src $dst
+  done
+}
+
+# Get the path where the file is located.
+# Then resolve symbolic link just to make sure.
+#
+
+# use mklink(windows shortcut) instead of ln -s
+export CYGWIN="winsymlinks:nativestrict"
+
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd)
+
+setup_ohmyzsh
+setup_dotfiles
+setup_sublime3
+setup_poderosa
+
+print_info '\n  All installed!'

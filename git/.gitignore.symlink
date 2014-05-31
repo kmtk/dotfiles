@@ -1,0 +1,54 @@
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.cache
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# Python .gitignore ----------------------------
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Distribution / packaging
+*.egg-info/
+.installed.cfg
+*.egg
+*.cache
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Sib;o,e .gitignore ---------------------------
+*.info
+
+# for dotfiles.git  ----------------------------
+sublime3/User/Package Control.cache/*
+sublime3/User/Package Control.last-run
+sublime3/User/.SublimeREPLHistory/python.db
+sublime3/User/encoding_cache.json
+poderosa/options.conf.prev
+bin.symlink/subl.lnk
+
+#########
+## added
+#########
+# Multibyte files
+*[! -~]*
