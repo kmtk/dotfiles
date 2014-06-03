@@ -1,0 +1,61 @@
+﻿[AFXW]
+CFG=ON
+
+[EXT_NORMAL]
+E_000=sublime-package
+N_000="&V_ARC"
+
+[REG_DIR]
+PRT_00="tmp"
+DIR_00=F:\tmp\
+PRT_01="home"
+DIR_01=D:\home\kmtk\
+PRT_02="chrome"
+DIR_02=C:\Users\Baroque\Downloads\
+PRT_03="dropbox"
+DIR_03=D:\home\kmtk\dropbox\
+PRT_04="dev"
+DIR_04=D:\dev\
+PRT_05="workspace"
+DIR_05=D:\home\kmtk\ws\
+PRT_06="nas"
+DIR_06=\\BaroqueNAS\home\
+PRT_07="nas-git"
+DIR_07=\\BaroqueNAS\git\
+PRT_08="android-sdk"
+DIR_08=D:\dev\Android\adt-bundle-windows-x86_64\sdk\
+PRT_09="android-emu"
+DIR_09=C:\Users\Baroque\.android\avd\
+PRT_10="kindle"
+DIR_10=D:\dev\Android\kindle\
+PRT_11="galaxy"
+DIR_11=D:\dev\Android\galaxy\
+PRT_12="x86(Program Files x86)"
+DIR_12=D:\Program Files (x86)\
+PRT_13="x64(Program Files)"
+DIR_13=D:\Program Files\
+PRT_14="sublime3"
+DIR_14=D:\home\kmtk\tool\sublime3\
+PRT_15="q_dotfiles"
+DIR_15=D:\home\kmtk\.dotfiles\
+PRT_16="z_afxw"
+DIR_16=D:\home\kmtk\tool\afxw\
+
+[REG_MSK]
+PRT_00="*.*"
+MSK_00="*.*"
+PRT_01="*.exe"
+MSK_01="*.exe"
+PRT_02="*.conf"
+MSK_02="*.conf"
+
+[REG_COL]
+COL_00=16744576
+EXT_00=exe bat cmd sh msi
+COL_01=8454016
+EXT_01=txt c cpp h hpp log dat py rb pl rc om key ini def
+COL_02=12615935
+EXT_02=zip 7z rar lzh cab tgz tar bz2 gca
+COL_03=4227327
+EXT_03=sublime-build sublime-keymap sublime-snippet sublime-package sublime-settings sublime-menu sublime-commands
+

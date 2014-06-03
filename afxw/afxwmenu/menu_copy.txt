@@ -1,0 +1,9 @@
+afxw コピーメニュー
+"W 同一フォルダにコピー"                &COPYTO $P
+"U 上の階層にコピー"                    &COPYTO $P\..
+" -----------------------"
+"J コピー先を入力して指定"              &COPYTO !
+"H 複写先をヒストリーから選ぶ"          &COPYHIS
+"M メッセージをコピー"                 &MESCLIP
+" -----------------------"
+"= Edit this" &EDIT $~\afxwmenu\menu_copy.txt

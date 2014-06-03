@@ -116,18 +116,17 @@ setup_ohmyzsh () {
   link "$DOTFILES_ROOT/zsh/.oh-my-zsh/custom" "$HOME/.oh-my-zsh/custom"
 }
 
-setup_sublime3 () {
-  print_info "setup_sublime3"
+setup_dotfiles () {
+  print_info 'installing dotfiles'
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  if [ ! -d $HOME/tool/sublime3 ]; then
-    print_normal "$HOME/tool/sublime3 is not exist."
-    sh -c $DOTFILES_ROOT/sublime3/install_sublime3.sh
-  fi
-
-  link "$DOTFILES_ROOT/sublime3/User" "$HOME/tool/sublime3/Data/Packages/User"
-  link "$HOME/tool/sublime3/sublime_text.exe" "$HOME/bin/subl"
+  # .symlink files
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+  do
+    dst="$HOME/$(basename "${src%.*}")"
+    link $src $dst
+  done
 }
 
 setup_poderosa () {
@@ -144,23 +143,40 @@ setup_poderosa () {
   link "$DOTFILES_ROOT/poderosa" "$cyg_poderosa_conf"
 }
 
-setup_dotfiles () {
-  print_info 'installing dotfiles'
+setup_sublime3 () {
+  print_info "setup_sublime3"
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  # .symlink files
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
-  do
-    dst="$HOME/$(basename "${src%.*}")"
-    link $src $dst
-  done
+  if [ ! -d $HOME/tool/sublime3 ]; then
+    print_normal "$HOME/tool/sublime3 is not exist."
+    sh -c $DOTFILES_ROOT/sublime3/install_sublime3.sh
+  fi
+
+  link "$DOTFILES_ROOT/sublime3/User" "$HOME/tool/sublime3/Data/Packages/User"
+  link "$HOME/tool/sublime3/sublime_text.exe" "$HOME/bin/subl"
+}
+
+setup_afxw () {
+  print_info "setup_afxw"
+
+  local overwrite_all=false backup_all=false skip_all=false
+
+  if [ ! -d $HOME/tool/afxw ]; then
+    print_normal "$HOME/tool/afxw is not exist."
+    sh -c $DOTFILES_ROOT/afxw/install_afxw.sh
+  fi
+
+  link "$DOTFILES_ROOT/afxw/afxwmenu" "$HOME/tool/afxw/afxwmenu"
+  link "$DOTFILES_ROOT/afxw/config/AFXW.INI" "$HOME/tool/afxw/AFXW.INI"
+  link "$DOTFILES_ROOT/afxw/config/AFXW.DEF" "$HOME/tool/afxw/AFXW.DEF"
+  link "$DOTFILES_ROOT/afxw/config/AFXW.KEY" "$HOME/tool/afxw/AFXW.KEY"
+  link "$DOTFILES_ROOT/afxw/config/AFXW_READABLE.KEY" "$HOME/tool/afxw/AFXW_READABLE.KEY"
 }
 
 # Get the path where the file is located.
 # Then resolve symbolic link just to make sure.
 #
-
 # use mklink(windows shortcut) instead of ln -s
 export CYGWIN="winsymlinks:nativestrict"
 
@@ -169,7 +185,8 @@ DOTFILES_ROOT=$(pwd)
 
 setup_ohmyzsh
 setup_dotfiles
-setup_sublime3
 setup_poderosa
+setup_sublime3
+setup_afxw
 
 print_info '\n  All installed!'

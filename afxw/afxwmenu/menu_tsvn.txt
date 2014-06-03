@@ -1,0 +1,23 @@
+afxw TortoiseSVN
+"U: Update(file)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:update /path:"$QN$J*$MF" /notempfile
+"U: Update(dir)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:update /path:"$P" /notempfile
+"X: Checkout"		"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:checkout /path:"$P" /notempfile
+" -----------------------"
+"A: Add"			"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:add /path:"$QN$J*$MF" /notempfile
+"C: Commit(file)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:commit /path:"$QN$J*$MF" /notempfile
+"C: Commit(dir)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:commit /path:"$P" /notempfile
+" -----------------------"
+"D: Delete(file)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:remove /path:"$QN$J*$MF" /notempfile
+"D: Delete(dir)"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:remove /path:"$P" /notempfile
+" -----------------------"
+"R: Revert(file)" 	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:revert /path:"$QN$J*$MF" /notempfile
+"R: Revert(dir)" 	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:revert /path:"$P" /notempfile
+" -----------------------"
+"L: Log(file)"		&each "D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:log /path:"$P\$F" /notempfile
+"L: Log(dir)"		"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:log /path:"$P" /notempfil
+"B: RepoBrowser"	"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:repobrowser /path:"$P" /notempfile
+"P: Properties"		"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:properties /path:"$P\$F" /notempfile
+"S: Status" 		"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:repostatus /path:"$P" /notempfile
+"Z: Settings" 		"D:\Program Files\TortoiseSVN\bin\TortoiseProc.exe" /command:settings /notempfile
+" -----------------------"
+"= Edit this" &EDIT $~\afxwmenu\menu_tsvn.txt
