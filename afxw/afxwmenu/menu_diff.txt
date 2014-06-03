@@ -1,0 +1,7 @@
+afxw diff メニュー
+"W ディレクトリの比較（WinMerge）" "$V"HOME"\tool\winmerge\WinMergeU.exe" $MF $mO
+"P ファイルの比較（P4Merge）"  "$V"APPDIR64"\Perforce\p4merge.exe" $MF $mO
+" -----------------------"
+"= Edit this" &EDIT $~\afxwmenu\menu_diff.txt
+
+

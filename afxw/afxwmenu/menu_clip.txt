@@ -1,0 +1,10 @@
+afxw ファイル名のコピー
+"X フルパス"            &CLIP $QN$JD$MF
+"F ファイル名のみ"       &CLIP $QN$JD$MS
+"A /  区切りでコピー"    cmd /c echo $QN$JT$MF | $~\afxwtool\sed\bin\sed.exe -f $~\afxwmenu\path_posix.sed | clip
+"W \\ 区切りでコピー"    cmd /c echo $QN$JT$MF | $~\afxwtool\sed\bin\sed.exe -f $~\afxwmenu\path_w_escape.sed | clip
+"S ショートファイルネーム"   &CLIP $P$F
+"T ダブルミュートで括る"    &CLIP "$QN$JD$MF"
+"\ 末尾に\"           &CLIP $QN$JD$MF\
+" -----------------------"
+"= Edit this" &EDIT $~\afxwmenu\menu_clip.txt
