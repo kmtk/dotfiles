@@ -130,7 +130,7 @@ install_param=(
   "bron.zip      $afxw_dir/afxwtool/bregonig/      unpack         https://bitbucket.org/k_takata/bregonig/downloads/bron305.zip"
   "sed-bin.zip   $afxw_dir/afxwtool/sed/           unpack         http://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-bin.zip"
   "sed-dep.zip   $afxw_dir/afxwtool/sed/bin/       unpack_dll     http://downloads.sourceforge.net/project/gnuwin32/sed/4.2.1/sed-4.2.1-dep.zip"
-  "ffc.zip       $afxw_dir/afxwtool/firefilecopy/  unpack         http://www.k3.dion.ne.jp/~kitt/pc/sw/ffc/ffc4_9_1u.zip"
+  "ffc.zip       $afxw_dir/afxwtool/filefirecopy/  unpack         http://www.k3.dion.ne.jp/~kitt/pc/sw/ffc/ffc4_9_1u.zip"
   "rncpy.zip     $afxw_dir/afxwtool/renamecopy/    unpack         http://www.geocities.jp/enpanpy/rc/rncpy137.zip"
   "fasthash.zip  $afxw_dir/afxwtool/fasthash/      unpack         http://ftp.vector.co.jp/pack/win95/util/bin/fasthash039b.zip"
   "afxfind.zip   $afxw_dir/afxwtool/afxfind/       unpack         http://yuratomo.up.seesaa.net/image/afxfind_v0.3.2.zip"
